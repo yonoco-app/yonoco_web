@@ -1,0 +1,31 @@
+title: Yonoco
+description: Keep track of your past and future travels, share them with friends, and connect with fellow travelers.
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+
+# Multilingual settings
+languages:
+  - code: en
+    label: English
+    default: true
+  - code: fr
+    label: Français
+
+# Theme settings
+theme_mode: auto # auto, light, dark
+
+# Social links
+social_links:
+  github: # your GitHub username
+  twitter: # your Twitter username
+  instagram: # your Instagram username
+
+# App links
+app_links:
+  ios: "#"
+  android: "#" 

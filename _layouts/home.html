@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<section class="hero fullscreen-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ page.hero_title }}</h1>
+    <p class="hero-subtitle">{{ page.hero_subtitle }}</p>
+    <div class="app-buttons">
+      <a href="{{ site.app_links.ios }}" class="app-button ios" target="_blank" rel="noopener">
+        <i class="fab fa-apple"></i>
+        <span>
+          <small>{{ page.download_on }}</small>
+          App Store
+        </span>
+      </a>
+      <a href="{{ site.app_links.android }}" class="app-button android" target="_blank" rel="noopener">
+        <i class="fab fa-google-play"></i>
+        <span>
+          <small>{{ page.download_on }}</small>
+          Google Play
+        </span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-copyright">
+    &copy; {% if page.lang == "fr" %}Droits d'auteur{% else %}Copyright{% endif %} {{ 'now' | date: "%Y" }} {{ site.title }}
+  </div>
+</section> 

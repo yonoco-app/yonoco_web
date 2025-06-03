@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.languages[0].code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  {% seo %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="top-header-row">
+          <a href="{{ site.baseurl }}/{% if page.lang != site.languages[0].code %}{{ page.lang }}/{% endif %}" class="logo">
+            <img src="{{ '/assets/images/yonoco.svg' | relative_url }}" alt="Yonoco" class="logo-image">
+            <span class="logo-text">{{ site.title }}</span>
+          </a>
+          
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <select id="language-select" onchange="changeLanguage(this.value)">
+              {% for lang in site.languages %}
+                <option value="{{ lang.code }}" {% if page.lang == lang.code %}selected{% endif %}>
+                  {% if lang.code == 'en' %}🇬🇧 {% elsif lang.code == 'fr' %}🇫🇷 {% endif %}{{ lang.label }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        
+        <div class="header-controls">
+          <!-- Navigation Links -->
+          <nav class="main-nav">
+            {% assign lang_prefix = "" %}
+            {% if page.lang != site.languages[0].code %}
+              {% assign lang_prefix = page.lang | append: "/" %}
+            {% endif %}
+            <a href="{{ site.baseurl }}/{{ lang_prefix }}privacy-policy">
+              {% if page.lang == "fr" %}Politique de confidentialité{% else %}Privacy Policy{% endif %}
+            </a>
+            <a href="{{ site.baseurl }}/{{ lang_prefix }}terms-of-service">
+              {% if page.lang == "fr" %}Conditions d'utilisation{% else %}Terms of Service{% endif %}
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-content">
+    {% if page.layout == 'home' %}
+      {{ content }}
+    {% else %}
+      <div class="container">
+        {{ content }}
+      </div>
+    {% endif %}
+  </main>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html> 
